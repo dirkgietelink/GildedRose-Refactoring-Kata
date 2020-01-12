@@ -20,7 +20,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void updateNormalItemWithQualityZero_ThenQualityStaysZero() {
+    public void updateNormalItemWithQualityZero_ThenQualityCannotBeNegative() {
         Item[] items = new Item[] { new Item("foo", 3, 0) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
@@ -30,14 +30,151 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void updateNormalItemWithSellInZero_ThenQualityCanBeNegative() {
-        Item[] items = new Item[] { new Item("foo", 0, 1) };
+    public void updateNormalItemWithSellInZero_ThenSellInCanBeNegativeAndQualityMinusTwo() {
+        Item[] items = new Item[] { new Item("foo", 0, 3) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals("foo", app.items[0].name);
         assertEquals(-1, app.items[0].sellIn);
-        assertEquals(0, app.items[0].quality);
+        assertEquals(1, app.items[0].quality);
     }
+
+    @Test
+    public void sellDatePassed_ThenQualityDegradeTimesTwo() {
+        Item[] items = new Item[] { new Item("foo", -1, 5) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals("foo", app.items[0].name);
+        assertEquals(-2, app.items[0].sellIn);
+        assertEquals(3, app.items[0].quality);
+    }
+
+    @Test
+    public void sellInIsZero_ThenQualityDegradeTimesTwo() {
+        Item[] items = new Item[] { new Item("foo", 0, 5) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals("foo", app.items[0].name);
+        assertEquals(-1, app.items[0].sellIn);
+        assertEquals(3, app.items[0].quality);
+    }
+
+    @Test
+    public void agedBrieOlder_ThenQualityIncreases() {
+        Item[] items = new Item[] {
+            new Item("Aged Brie", 5, 3),
+            new Item("agEd bRie", 5, 3),
+            new Item("AGED BRIE", 5, 3),
+            new Item("  Aged Brie  ", 5, 3),
+            new Item("This is NOT Aged Brie", 5, 3)};
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(4, app.items[0].quality);
+        assertEquals(4, app.items[1].quality);
+        assertEquals(4, app.items[2].quality);
+        assertEquals(4, app.items[3].quality);
+        // The last item should decrease in quality
+        assertEquals(2, app.items[4].quality);
+    }
+
+    @Test
+    public void agedBrieOlder_ThenQualityCannotExceedFifty() {
+        Item[] items = new Item[] {new Item("Aged Brie", 5, 50) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(50, app.items[0].quality);
+    }
+
+    @Test
+    public void sulfurasSellDateNeverChangesAndAlwaysPositive() {
+        Item[] items = new Item[] {new Item("Sulfuras", 5, 80) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(5, items[0].sellIn);
+    }
+
+    @Test
+    public void sulfurasQualityIsAlwaysEighty() {
+        Item[] items = new Item[] {
+            new Item("Sulfuras", 5, 80),
+            new Item("Sulfuras", 5, 13),
+        };
+        assertEquals(80, items[0].quality);
+        assertEquals(80, items[1].quality);
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(80, items[0].quality);
+        assertEquals(80, items[1].quality);
+    }
+
+    @Test
+    public void backstagePassesMoreThan10Days_ThenQualityIncreasesBy1() {
+        Item[] items = new Item[] {
+            new Item("Backstage passes to a TAFKAL80ETC concert", 11, 3),
+            new Item("Backstage pass", 12, 3),
+            new Item("Backstage passes", 13, 3),
+            new Item("backSTage paSSeS in a different case", 14, 3),
+            new Item("Backstage passes to Whatever concert", 15, 3),
+            new Item("Here are some more backstage passes", 16, 3)};
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(4, app.items[0].quality);
+        assertEquals(4, app.items[1].quality);
+        assertEquals(4, app.items[2].quality);
+        assertEquals(4, app.items[3].quality);
+        assertEquals(4, app.items[4].quality);
+        assertEquals(4, app.items[5].quality);
+    }
+
+    @Test
+    public void backstagePassesBetween5and10DaysInclusive_ThenQualityIncreasesBy2() {
+        // 10
+        Item[] items = new Item[] {
+            new Item("Backstage passes to concert ABC", 10, 3),
+            new Item("Backstage passes to concert DEF", 6, 3) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(5, app.items[0].quality);
+        assertEquals(5, app.items[1].quality);
+    }
+
+    @Test
+    public void backstagePassesLessThan5DaysInclusive_ThenQualityIncreasesBy3() {
+        // 10
+        Item[] items = new Item[] {
+            new Item("Backstage passes to concert ABC", 5, 3),
+            new Item("Backstage passes to concert ABC", 1, 4),
+            new Item("Backstage passes to concert ABC", 0, 5) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(6, app.items[0].quality);
+        assertEquals(7, app.items[1].quality);
+        assertEquals(8, app.items[2].quality);
+    }
+
+    @Test
+    public void backstagePassesZeroOrLessDaysLeft_ThenQualityIsZero() {
+        // 10
+        Item[] items = new Item[] {
+            new Item("Backstage passes to concert ABC", -1, 3),
+            new Item("Backstage passes to concert ABC", -2, 50) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(0, app.items[0].quality);
+        assertEquals(0, app.items[1].quality);
+    }
+
+
+
+    @Test
+    public void backstagePassesOlder_ThenQualityCannotExceedFifty() {
+        Item[] items = new Item[] {
+            new Item("Backstage passes to a TAFKAL80ETC concert", 5, 50) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(50, app.items[0].quality);
+    }
+
 
     @Test
     public void updateItemListFromOriginalApplication() {
