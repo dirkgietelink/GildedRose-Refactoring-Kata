@@ -48,6 +48,14 @@ cause breaking tests, from which I started a more standard TDD loop.
 * Disabled some tests as they were failing and could not be implemented yet (Sulfuras quality, and Conjured items).
 * All remaining tests were now green, which is good starting point for refactoring.
 * Extracted constants
+* Splitted updateQuality into different methods for each type of Item
+* Fixed new code, based on unit tests
+* Removed old messy code
+* 
+*
+* Once code is in acceptable refactored state, will add the conjured item functionality.
 
 ### Bugs found and fixed
- 
+
+### Github reference
+[My Guilded Rose fork on Github](https://github.com/dirkgietelink/GildedRose-Refactoring-Kata)
