@@ -1,5 +1,41 @@
+### Solution introduction
+
+* issues to fix
+* how I tackled the kata
+* assumptions
+* bugs
+* layout and explanation of the solution code
+
+### Issues to fix
+
+* magic numbers
+* hardcoded strings
+* duplicated (`if` and `else`) statements
+* handle different types of items
+* polymorphism
+* open-closed principle: make it extendable, not modifiable
+* remove unused code
+* nullpointer checks
+* javadoc
+* create README or assisting documentation of my solution
+* robustness (based on assumptions)
+* clean up code: commented code, todos, and disabled tests
+* verify code coverage
+
 ### Assumptions
 
 * Aged Brie is matched ignoring case sensitivity.
 * Aged Brie is matched ignoring leading or trailing spaces.
-* Aged Brie is NOT matched if the Item name contains other words. 
+* Aged Brie is also matched if the Item name contains other words.
+
+### How I progressed through the refactoring
+
+* Forked the project to my own  Github
+* Read  requirements and tried to understand the code from a global level
+* Ran the tests
+* Formalized the requirements description,in order to create a baseline for adding new unit tests.
+* Added a number of unit tests
+* 
+
+### Bugs found and fixed
+ 
