@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -69,7 +69,8 @@ public class GildedRoseTest {
         assertEquals(4, app.items[0].quality);
     }
 
-    @Ignore
+    @Disabled
+    @Test
     public void agedBrieLessStrictNamed_ThenQualityIncreases() {
         Item[] items = new Item[] {
             new Item("agEd bRie", 5, 3),
@@ -114,7 +115,8 @@ public class GildedRoseTest {
         assertEquals(80, items[1].quality);
     }
 
-    @Ignore
+    @Disabled
+    @Test
     public void sulfurasLessStrictNamedQualityIsAlwaysEighty() {
         Item[] items = new Item[] {
             new Item("Sulfuras", 5, 80),
@@ -137,7 +139,8 @@ public class GildedRoseTest {
         assertEquals(4, app.items[0].quality);
     }
 
-    @Ignore
+    @Disabled
+    @Test
     public void backstagePassesLessStrictNamedMoreThan10Days_ThenQualityIncreasesBy1() {
         Item[] items = new Item[] {
             new Item("Backstage pass", 11, 3),
