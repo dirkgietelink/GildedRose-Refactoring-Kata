@@ -302,4 +302,9 @@ public class GildedRoseTest {
         assertEquals(4, items[8].quality);
     }
 
+    // TODO unit test for creating Items with invalid input data: e.g.
+    //  negative quality,
+    //  too high quality,
+    //
+
 }
