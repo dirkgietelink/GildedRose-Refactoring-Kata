@@ -104,7 +104,7 @@ public class GildedRoseTest {
         Item[] items = new Item[] {new Item("Sulfuras, Hand of Ragnaros", 5, 80) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals(5, items[0].sellIn);
+        assertEquals(Integer.MAX_VALUE, items[0].sellIn);
     }
 
     @Disabled("Skipped: This test is failing, cause Sulfuras quality is not set to 80 upon creation")

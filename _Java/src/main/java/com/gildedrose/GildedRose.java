@@ -32,12 +32,12 @@ class GildedRose {
                     break;
                 case SULFURAS_HAND_OF_RAGNAROS:
                     updateSulfuras(item);
-                    break;
+                    item.sellIn = Integer.MAX_VALUE;
+                    return;
                 default:
                     updateNormalItem(item);
                     break;
             }
-
             item.sellIn--;
         }
     }
