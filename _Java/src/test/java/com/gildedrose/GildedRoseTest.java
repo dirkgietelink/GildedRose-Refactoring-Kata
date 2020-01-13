@@ -196,10 +196,18 @@ public class GildedRoseTest {
     @Test
     public void backstagePassesOlder_ThenQualityCannotExceedFifty() {
         Item[] items = new Item[] {
-            new Item("Backstage passes to a TAFKAL80ETC concert", 5, 50) };
+            new Item("Backstage passes to a TAFKAL80ETC concert", 20, 49),
+            new Item("Backstage passes to a TAFKAL80ETC concert", 8, 49),
+            new Item("Backstage passes to a TAFKAL80ETC concert", 4, 49) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(50, app.items[0].quality);
+        assertEquals(50, app.items[1].quality);
+        assertEquals(50, app.items[2].quality);
+        app.updateQuality();
+        assertEquals(50, app.items[0].quality);
+        assertEquals(50, app.items[1].quality);
+        assertEquals(50, app.items[2].quality);
     }
 
     @Test
