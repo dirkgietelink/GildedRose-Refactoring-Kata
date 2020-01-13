@@ -210,6 +210,41 @@ public class GildedRoseTest {
         assertEquals(50, app.items[2].quality);
     }
 
+    @Disabled("Conjured item update not yet implemented")
+    @Test
+    public void updateConjuredItem_ThenDegradeSellInAndQualityByTwo() {
+        Item[] items = new Item[] { new Item("Conjured Mana Cake", 3, 3) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(2, app.items[0].sellIn);
+        assertEquals(1, app.items[0].quality);
+    }
+
+    @Test
+    public void updateConjuredItemWithQualityZeroOrOne_ThenQualityCannotBeNegative() {
+        Item[] items = new Item[] {
+            new Item("Conjured Mana Cake", 3, 0),
+            new Item("Conjured Mana Cake", 3, 1) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(0, app.items[0].quality);
+        assertEquals(0, app.items[1].quality);
+    }
+
+    @Disabled("Conjured item update not yet implemented")
+    @Test
+    public void updateConjuredItemSellDatePassedOrZero_ThenQualityDegradeWithFour() {
+        Item[] items = new Item[] {
+            new Item("Conjured Mana Cake", 0, 5),
+            new Item("Conjured Mana Cake", -1, 5) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(-1, app.items[0].sellIn);
+        assertEquals(1, app.items[0].quality);
+        assertEquals(-2, app.items[1].sellIn);
+        assertEquals(1, app.items[1].quality);
+    }
+
     @Test
     public void updateItemListFromOriginalApplication() {
         Item[] items = new Item[] {
