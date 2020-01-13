@@ -34,8 +34,9 @@
 * Read  requirements and tried to understand the code from a global level
 * Ran the tests
 * Formalized the requirements description,in order to create a baseline for adding new unit tests.
-* Added a number of unit tests
-* 
+* Added a number of unit tests to meet all the requirements. 
+* Disabled some tests as they were failing and could not be implemented yet (Sulfuras quality, and Conjured items)
+* Extracted constants
 
 ### Bugs found and fixed
  
