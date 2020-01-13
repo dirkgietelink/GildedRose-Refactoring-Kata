@@ -1,5 +1,12 @@
 ### Solution introduction
 
+For a solution I did not go for the traditional TDD Kent-Beck style, because incremental test-code-refactor loop, was 
+not a wise starting point at the beginning. The code was too messy to understand, and the provided requirements were at 
+some points too vague to give exclusive clarity.
+Therefore I started writing a bunch unit tests first, before even touching the production code. After having implemented 
+unit tests for all requirements (tests for unimplemented conjured items disabled), I started refactoring. This would 
+cause breaking tests, from which I started a more standard TDD loop.
+
 * issues to fix
 * how I tackled the kata
 * assumptions
@@ -35,7 +42,8 @@
 * Ran the tests
 * Formalized the requirements description,in order to create a baseline for adding new unit tests.
 * Added a number of unit tests to meet all the requirements. 
-* Disabled some tests as they were failing and could not be implemented yet (Sulfuras quality, and Conjured items)
+* Disabled some tests as they were failing and could not be implemented yet (Sulfuras quality, and Conjured items).
+* All remaining tests were now green, which is good starting point for refactoring.
 * Extracted constants
 
 ### Bugs found and fixed
