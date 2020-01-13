@@ -7,6 +7,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GildedRoseTest {
 
+    // NORMAL ITEM
+
     @Test
     public void updateNormalItem_ThenDegradeSellInAndQualityByOne() {
         Item[] items = new Item[] { new Item("foo", 3, 1) };
@@ -41,7 +43,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void sellDatePassed_ThenQualityDegradeTimesTwo() {
+    public void updateNormalItemSellDatePassed_ThenQualityDegradeTimesTwo() {
         Item[] items = new Item[] { new Item("foo", -1, 5) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
@@ -51,7 +53,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void sellInIsZero_ThenQualityDegradeTimesTwo() {
+    public void updateNormalItemSellInIsZero_ThenQualityDegradeTimesTwo() {
         Item[] items = new Item[] { new Item("foo", 0, 5) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
@@ -60,8 +62,10 @@ public class GildedRoseTest {
         assertEquals(3, app.items[0].quality);
     }
 
+    // AGED BRIE
+
     @Test
-    public void agedBrieOlder_ThenQualityIncreases() {
+    public void updateAgedBrie_ThenQualityIncreases() {
         Item[] items = new Item[] {
             new Item("Aged Brie", 5, 3)};
         GildedRose app = new GildedRose(items);
@@ -69,9 +73,9 @@ public class GildedRoseTest {
         assertEquals(4, app.items[0].quality);
     }
 
-    @Disabled(value = "Lesss trict naming is not yet allowed")
+    @Disabled("Skipped: Less trict naming is not yet allowed")
     @Test
-    public void agedBrieLessStrictNamed_ThenQualityIncreases() {
+    public void updateAgedBrieLessStrictNamed_ThenQualityIncreases() {
         Item[] items = new Item[] {
             new Item("agEd bRie", 5, 3),
             new Item("AGED BRIE", 5, 3),
@@ -86,24 +90,26 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void agedBrieOlder_ThenQualityCannotExceedFifty() {
+    public void updateAgedBrie_ThenQualityCannotExceedFifty() {
         Item[] items = new Item[] {new Item("Aged Brie", 5, 50) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(50, app.items[0].quality);
     }
 
+    // SULFURAS
+
     @Test
-    public void sulfurasSellDateNeverChangesAndAlwaysPositive() {
+    public void updateSulfuras_ThenSellDateNeverChangesAndAlwaysPositive() {
         Item[] items = new Item[] {new Item("Sulfuras, Hand of Ragnaros", 5, 80) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
         assertEquals(5, items[0].sellIn);
     }
 
-    @Disabled("This test is failing, cause Sulfuras quality is not set to 80 upon creation")
+    @Disabled("Skipped: This test is failing, cause Sulfuras quality is not set to 80 upon creation")
     @Test
-    public void sulfurasQualityIsAlwaysEighty() {
+    public void updateSulfuras_ThenQualityIsAlwaysEighty() {
         Item[] items = new Item[] {
             new Item("Sulfuras, Hand of Ragnaros", 5, 80),
             new Item("Sulfuras, Hand of Ragnaros", 5, 13),
@@ -116,9 +122,9 @@ public class GildedRoseTest {
         assertEquals(80, items[1].quality);
     }
 
-    @Disabled(value = "Lesss trict naming is not yet allowed")
+    @Disabled("Skipped: Less trict naming is not yet allowed")
     @Test
-    public void sulfurasLessStrictNamedQualityIsAlwaysEighty() {
+    public void updateSulfurasLessStrictNamed_ThenQualityIsAlwaysEighty() {
         Item[] items = new Item[] {
             new Item("Sulfuras", 5, 80),
             new Item("Another Sulfuras", 5, 13),
@@ -131,8 +137,9 @@ public class GildedRoseTest {
         assertEquals(80, items[1].quality);
     }
 
+    // BACKSTAGE PASSES
     @Test
-    public void backstagePassesMoreThan10Days_ThenQualityIncreasesBy1() {
+    public void updateBackstagePassesMoreThan10Days_ThenQualityIncreasesBy1() {
         Item[] items = new Item[] {
             new Item("Backstage passes to a TAFKAL80ETC concert", 11, 3) };
         GildedRose app = new GildedRose(items);
@@ -140,9 +147,9 @@ public class GildedRoseTest {
         assertEquals(4, app.items[0].quality);
     }
 
-    @Disabled(value = "Lesss trict naming is not yet allowed")
+    @Disabled("Skipped: Less trict naming is not yet allowed")
     @Test
-    public void backstagePassesLessStrictNamedMoreThan10Days_ThenQualityIncreasesBy1() {
+    public void updateBackstagePassesLessStrictNamedMoreThan10Days_ThenQualityIncreasesBy1() {
         Item[] items = new Item[] {
             new Item("Backstage pass", 11, 3),
             new Item("Backstage passes", 12, 3),
@@ -159,7 +166,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void backstagePassesBetween5and10DaysInclusive_ThenQualityIncreasesBy2() {
+    public void updateBackstagePassesBetween5and10DaysInclusive_ThenQualityIncreasesBy2() {
         Item[] items = new Item[] {
             new Item("Backstage passes to a TAFKAL80ETC concert", 10, 3),
             new Item("Backstage passes to a TAFKAL80ETC concert", 6, 3) };
@@ -170,7 +177,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void backstagePassesLessThan5DaysInclusive_ThenQualityIncreasesBy3() {
+    public void updateBackstagePassesLessThan5DaysInclusive_ThenQualityIncreasesBy3() {
         Item[] items = new Item[] {
             new Item("Backstage passes to a TAFKAL80ETC concert", 5, 3),
             new Item("Backstage passes to a TAFKAL80ETC concert", 1, 4) };
@@ -181,7 +188,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void backstagePassesZeroOrLessDaysLeft_ThenQualityIsZero() {
+    public void updateBackstagePassesZeroOrLessDaysLeft_ThenQualityIsZero() {
         Item[] items = new Item[] {
             new Item("Backstage passes to a TAFKAL80ETC concert", 0, 5),
             new Item("Backstage passes to a TAFKAL80ETC concert", -1, 3),
@@ -194,7 +201,7 @@ public class GildedRoseTest {
     }
 
     @Test
-    public void backstagePassesOlder_ThenQualityCannotExceedFifty() {
+    public void updateBackstagePasses_ThenQualityCannotExceedFifty() {
         Item[] items = new Item[] {
             new Item("Backstage passes to a TAFKAL80ETC concert", 20, 49),
             new Item("Backstage passes to a TAFKAL80ETC concert", 8, 49),
@@ -210,7 +217,9 @@ public class GildedRoseTest {
         assertEquals(50, app.items[2].quality);
     }
 
-    @Disabled("Conjured item update not yet implemented")
+    // CONJURED ITEM
+
+    @Disabled("Skipped: Conjured item update not yet implemented")
     @Test
     public void updateConjuredItem_ThenDegradeSellInAndQualityByTwo() {
         Item[] items = new Item[] { new Item("Conjured Mana Cake", 3, 3) };
@@ -231,7 +240,7 @@ public class GildedRoseTest {
         assertEquals(0, app.items[1].quality);
     }
 
-    @Disabled("Conjured item update not yet implemented")
+    @Disabled("Skipped: Conjured item update not yet implemented")
     @Test
     public void updateConjuredItemSellDatePassedOrZero_ThenQualityDegradeWithFour() {
         Item[] items = new Item[] {
@@ -245,6 +254,9 @@ public class GildedRoseTest {
         assertEquals(1, app.items[1].quality);
     }
 
+    // ORIGINAL FROM TexttestFixture.java
+
+    @Disabled("Skipped: Should be failing now by correct assertion on conjured item")
     @Test
     public void updateItemListFromOriginalApplication() {
         Item[] items = new Item[] {
@@ -256,7 +268,6 @@ public class GildedRoseTest {
             new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20),
             new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49),
             new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49),
-            // this conjured item does not work properly yet
             new Item("Conjured Mana Cake", 3, 6) };
 
         GildedRose app = new GildedRose(items);
@@ -288,7 +299,7 @@ public class GildedRoseTest {
         assertEquals(50, items[7].quality);
         assertEquals("Conjured Mana Cake", items[8].name);
         assertEquals(2, items[8].sellIn);
-        assertEquals(5, items[8].quality);
+        assertEquals(4, items[8].quality);
     }
 
 }
