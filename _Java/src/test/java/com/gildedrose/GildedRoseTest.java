@@ -73,7 +73,7 @@ public class GildedRoseTest {
         assertEquals(4, app.items[0].quality);
     }
 
-    @Disabled("Skipped: Less trict naming is not yet allowed")
+    @Disabled("Skipped: Less strict naming is not yet allowed")
     @Test
     public void updateAgedBrieLessStrictNamed_ThenQualityIncreases() {
         Item[] items = new Item[] {
@@ -122,7 +122,7 @@ public class GildedRoseTest {
         assertEquals(80, items[1].quality);
     }
 
-    @Disabled("Skipped: Less trict naming is not yet allowed")
+    @Disabled("Skipped: Less strict naming is not yet allowed")
     @Test
     public void updateSulfurasLessStrictNamed_ThenQualityIsAlwaysEighty() {
         Item[] items = new Item[] {
@@ -147,7 +147,7 @@ public class GildedRoseTest {
         assertEquals(4, app.items[0].quality);
     }
 
-    @Disabled("Skipped: Less trict naming is not yet allowed")
+    @Disabled("Skipped: Less strict naming is not yet allowed")
     @Test
     public void updateBackstagePassesLessStrictNamedMoreThan10Days_ThenQualityIncreasesBy1() {
         Item[] items = new Item[] {
