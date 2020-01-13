@@ -1,4 +1,6 @@
-### Solution introduction
+# Solution Guilded Rose Kata
+
+### Introduction
 
 For a solution I did not go for the traditional TDD Kent-Beck style, because incremental test-code-refactor loop, was 
 not a wise starting point at the beginning. The code was too messy to understand, and the provided requirements were at 
@@ -31,6 +33,7 @@ cause breaking tests, from which I started a more standard TDD loop.
 
 ### Assumptions
 
+* Aged Brie is not decreasing in quality, once the due date has passed (this is a bit ambiguous from the requirements).
 * Aged Brie is matched ignoring case sensitivity.
 * Aged Brie is matched ignoring leading or trailing spaces.
 * Aged Brie is also matched if the Item name contains other words.
