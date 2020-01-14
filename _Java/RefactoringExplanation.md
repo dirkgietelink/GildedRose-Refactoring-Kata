@@ -9,12 +9,6 @@ Therefore I started writing a bunch unit tests first, before even touching the p
 unit tests for all requirements (tests for unimplemented conjured items disabled), I started refactoring. This would 
 cause breaking tests, from which I started a more standard TDD loop.
 
-* issues to fix
-* how I tackled the kata
-* assumptions
-* bugs
-* layout and explanation of the solution code
-
 ### Issues to fix
 
 * magic numbers
@@ -30,6 +24,7 @@ cause breaking tests, from which I started a more standard TDD loop.
 * robustness (based on assumptions)
 * clean up code: commented code, todos, and disabled tests
 * verify code coverage
+* package structure
 
 ### Assumptions
 
@@ -57,8 +52,7 @@ cause breaking tests, from which I started a more standard TDD loop.
 * Refactored those classes by implementing default method and sensible constants.
 * Implemented factory pattern for creating the specific type of ItemUpdater.
 * Refactored the GildedRose application to use the factory. 
-*
-* Once code is in acceptable refactored state, will add the conjured item functionality.
+* Code is in acceptable refactored state, so I enabled the tests for conjured items and implemented its functionality.
 
 ### Bugs found and fixed
 
