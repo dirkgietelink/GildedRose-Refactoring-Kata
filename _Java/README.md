@@ -1,0 +1,1 @@
+For details on the implemented solution and other info, please see the **README.md in the root folder**.
