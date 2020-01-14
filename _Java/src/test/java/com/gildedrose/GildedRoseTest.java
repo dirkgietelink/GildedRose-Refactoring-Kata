@@ -304,6 +304,6 @@ public class GildedRoseTest {
     // TODO unit test for creating Items with invalid input data: e.g.
     //  negative quality,
     //  too high quality,
-    //
+    //  null input
 
 }
