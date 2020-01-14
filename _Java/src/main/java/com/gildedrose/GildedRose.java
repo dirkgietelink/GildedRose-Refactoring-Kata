@@ -1,12 +1,11 @@
 package com.gildedrose;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 class GildedRose {
 
     Item[] items;
-
-    public GildedRose(Item[] items) {
-        this.items = items;
-    }
 
     public void updateQuality() {
         ItemUpdaterFactory itemUpdaterFactory = new ItemUpdaterFactory();
