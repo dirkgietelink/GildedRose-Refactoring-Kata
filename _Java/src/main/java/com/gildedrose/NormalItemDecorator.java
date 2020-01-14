@@ -11,7 +11,7 @@ public class NormalItemDecorator implements ItemUpdater {
 
     @Override
     public void updateQuality() {
-        int qualityStepFactor = (item.sellIn > 0) ? -1 : -2;
+        int qualityStepFactor = (item.sellIn > DUE_DATE) ? -1 : -2;
         item.quality = Math.max(item.quality + qualityStepFactor, MIN_QUALITY);
     }
 }
