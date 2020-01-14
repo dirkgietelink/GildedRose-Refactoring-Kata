@@ -7,7 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GildedRoseTest {
 
-    // NORMAL ITEM
+
+
+    /***** NORMAL ITEM *****/
 
     @Test
     public void updateNormalItem_ThenDegradeSellInAndQualityByOne() {
@@ -62,7 +64,8 @@ public class GildedRoseTest {
         assertEquals(3, app.items[0].quality);
     }
 
-    // AGED BRIE
+
+    /***** AGED BRIE *****/
 
     @Test
     public void updateAgedBrie_ThenQualityIncreases() {
@@ -97,7 +100,8 @@ public class GildedRoseTest {
         assertEquals(50, app.items[0].quality);
     }
 
-    // SULFURAS
+
+    /*****  SULFURAS *****/
 
     @Test
     public void updateSulfuras_ThenSellDateNeverChangesAndAlwaysPositive() {
@@ -136,7 +140,9 @@ public class GildedRoseTest {
         assertEquals(80, items[1].quality);
     }
 
-    // BACKSTAGE PASSES
+
+    /***** BACKSTAGE PASSES *****/
+
     @Test
     public void updateBackstagePassesMoreThan10Days_ThenQualityIncreasesBy1() {
         Item[] items = new Item[] {
@@ -216,9 +222,9 @@ public class GildedRoseTest {
         assertEquals(50, app.items[2].quality);
     }
 
-    // CONJURED ITEM
 
-    @Disabled("Skipped: Conjured item update not yet implemented")
+    /***** CONJURED ITEM *****/
+
     @Test
     public void updateConjuredItem_ThenDegradeSellInAndQualityByTwo() {
         Item[] items = new Item[] { new Item("Conjured Mana Cake", 3, 3) };
@@ -239,7 +245,6 @@ public class GildedRoseTest {
         assertEquals(0, app.items[1].quality);
     }
 
-    @Disabled("Skipped: Conjured item update not yet implemented")
     @Test
     public void updateConjuredItemSellDatePassedOrZero_ThenQualityDegradeWithFour() {
         Item[] items = new Item[] {
@@ -253,9 +258,9 @@ public class GildedRoseTest {
         assertEquals(1, app.items[1].quality);
     }
 
-    // ORIGINAL FROM TexttestFixture.java
 
-    @Disabled("Skipped: Should be failing now by correct assertion on conjured item")
+    /***** ORIGINAL FROM TexttestFixture.java *****/
+
     @Test
     public void updateItemListFromOriginalApplication() {
         Item[] items = new Item[] {
@@ -282,10 +287,10 @@ public class GildedRoseTest {
         assertEquals(4, items[2].sellIn);
         assertEquals(6, items[2].quality);
         assertEquals("Sulfuras, Hand of Ragnaros", items[3].name);
-        assertEquals(0, items[3].sellIn);
+        assertEquals(Integer.MAX_VALUE, items[3].sellIn);
         assertEquals(80, items[3].quality);
         assertEquals("Sulfuras, Hand of Ragnaros", items[4].name);
-        assertEquals(-1, items[4].sellIn);
+        assertEquals(Integer.MAX_VALUE, items[4].sellIn);
         assertEquals(80, items[4].quality);
         assertEquals("Backstage passes to a TAFKAL80ETC concert", items[5].name);
         assertEquals(14, items[5].sellIn);

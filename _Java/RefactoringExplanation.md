@@ -34,6 +34,8 @@ cause breaking tests, from which I started a more standard TDD loop.
 ### Assumptions
 
 * Aged Brie is not decreasing in quality, once the due date has passed (this is a bit ambiguous from the requirements).
+* Sulfuras sellIn value is set to maximum int value after the first update, because the spec states that it never has to be sold. 
+
 * Aged Brie is matched ignoring case sensitivity.
 * Aged Brie is matched ignoring leading or trailing spaces.
 * Aged Brie is also matched if the Item name contains other words.
