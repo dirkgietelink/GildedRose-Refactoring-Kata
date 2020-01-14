@@ -51,7 +51,10 @@ cause breaking tests, from which I started a more standard TDD loop.
 * Splitted updateQuality into different methods for each type of Item
 * Fixed new code, based on unit tests
 * Removed old messy code
-* 
+* Created ItemUpdater interface, which is implemented by Decorator classes for updating the state of specific items.
+* Refactored those classes by implementing default method and sensible constants.
+* Implemented factory pattern for creating the specific type of ItemUpdater.
+* Refactored the GildedRose application to use the factory. 
 *
 * Once code is in acceptable refactored state, will add the conjured item functionality.
 
