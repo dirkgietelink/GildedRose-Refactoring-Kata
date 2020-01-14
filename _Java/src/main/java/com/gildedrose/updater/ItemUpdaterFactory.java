@@ -1,6 +1,7 @@
 package com.gildedrose.updater;
 
 import com.gildedrose.Item;
+import com.gildedrose.exception.UnsupportedItemException;
 
 /**
  * Factory class for creating {@link ItemUpdater}s.
@@ -19,8 +20,18 @@ public class ItemUpdaterFactory {
 
     /**
      * Creates a new {@link ItemUpdater} implementation based on the name of the provided {@link Item}.
+     *
+     * @param item
+     * @param strictNameMatcher
+     * @return
+     * @throws UnsupportedItemException
      */
     public ItemUpdater createUpdater(Item item, boolean strictNameMatcher) {
+        if (item == null) {
+            throw new UnsupportedItemException("Item cannot be null");
+        } else if (item.name == null) {
+            throw new UnsupportedItemException("Item name cannot be null");
+        }
         if (strictNameMatcher) {
             return createUpdaterStrict(item);
         } else {

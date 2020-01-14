@@ -1,13 +1,12 @@
 package com.gildedrose;
 
-import org.junit.jupiter.api.Disabled;
+import com.gildedrose.exception.UnsupportedItemException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class GildedRoseTest {
-
-
 
     /***** NORMAL ITEM *****/
 
@@ -306,9 +305,30 @@ public class GildedRoseTest {
         assertEquals(4, items[8].quality);
     }
 
-    // TODO unit test for creating Items with invalid input data: e.g.
-    //  negative quality,
-    //  too high quality,
-    //  null input
+
+    /***** TECHNICAL EDGE CASES *****/
+
+    @Test
+    public void updateNullItem_Then() {
+        Item[] items = new Item[] { null };
+        GildedRose app = new GildedRose(items);
+        Exception exception = assertThrows(
+            UnsupportedItemException.class,
+            () -> app.updateQuality());
+
+        assertEquals("Item cannot be null", exception.getMessage());
+    }
+
+    @Test
+    public void updateItemWithNullName_Then() {
+        Item[] items = new Item[] {
+            new Item(null, 1, 5) };
+        GildedRose app = new GildedRose(items);
+        Exception exception = assertThrows(
+            UnsupportedItemException.class,
+            () -> app.updateQuality());
+
+        assertEquals("Item name cannot be null", exception.getMessage());
+    }
 
 }
