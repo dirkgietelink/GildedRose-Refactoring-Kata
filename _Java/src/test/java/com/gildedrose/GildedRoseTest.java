@@ -76,7 +76,6 @@ public class GildedRoseTest {
         assertEquals(4, app.items[0].quality);
     }
 
-    @Disabled("Skipped: Less strict naming is not yet allowed")
     @Test
     public void updateAgedBrieLessStrictNamed_ThenQualityIncreases() {
         Item[] items = new Item[] {
@@ -85,6 +84,7 @@ public class GildedRoseTest {
             new Item("  Aged Brie  ", 5, 3),
             new Item("This is also Aged Brie", 5, 3)};
         GildedRose app = new GildedRose(items);
+        app.setStrictNameMatcher(false);
         app.updateQuality();
         assertEquals(4, app.items[0].quality);
         assertEquals(4, app.items[1].quality);
@@ -125,16 +125,16 @@ public class GildedRoseTest {
         assertEquals(80, items[1].quality);
     }
 
-    @Disabled("Skipped: Less strict naming is not yet allowed")
     @Test
-    public void updateSulfurasLessStrictNamed_ThenQualityIsAlwaysEighty() {
+    public void updateSulfurasUnstrictNamed_ThenQualityIsAlwaysEighty() {
         Item[] items = new Item[] {
             new Item("Sulfuras", 5, 80),
             new Item("Another Sulfuras", 5, 13),
         };
         assertEquals(80, items[0].quality);
-        assertEquals(80, items[1].quality);
+        assertEquals(13, items[1].quality);
         GildedRose app = new GildedRose(items);
+        app.setStrictNameMatcher(false);
         app.updateQuality();
         assertEquals(80, items[0].quality);
         assertEquals(80, items[1].quality);
@@ -152,9 +152,8 @@ public class GildedRoseTest {
         assertEquals(4, app.items[0].quality);
     }
 
-    @Disabled("Skipped: Less strict naming is not yet allowed")
     @Test
-    public void updateBackstagePassesLessStrictNamedMoreThan10Days_ThenQualityIncreasesBy1() {
+    public void updateBackstagePassesUnstrictNamedMoreThan10Days_ThenQualityIncreasesBy1() {
         Item[] items = new Item[] {
             new Item("Backstage pass", 11, 3),
             new Item("Backstage passes", 12, 3),
@@ -162,6 +161,7 @@ public class GildedRoseTest {
             new Item("Backstage passes to Whatever concert", 14, 3),
             new Item("Here are some more backstage passes", 15, 3)};
         GildedRose app = new GildedRose(items);
+        app.setStrictNameMatcher(false);
         app.updateQuality();
         assertEquals(4, app.items[0].quality);
         assertEquals(4, app.items[1].quality);

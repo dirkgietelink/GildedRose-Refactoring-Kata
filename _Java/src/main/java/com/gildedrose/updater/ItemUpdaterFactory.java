@@ -7,8 +7,10 @@ import com.gildedrose.Item;
  */
 public class ItemUpdaterFactory {
 
-    //    private static final String SULFURAS = "Sulfuras";
-    //    private static final String BACKSTAGE_PASS = "Backstage pass";
+    private static final String SULFURAS = "sulfuras";
+    private static final String BACKSTAGE_PASS = "backstage pass";
+    private static final String BRIE = "brie";
+    private static final String CONJURED = "conjured";
 
     private static final String SULFURAS_HAND_OF_RAGNAROS = "Sulfuras, Hand of Ragnaros";
     private static final String BACKSTAGE_PASSES_TO_A_TAFKAL80ETC_CONCERT = "Backstage passes to a TAFKAL80ETC concert";
@@ -17,11 +19,22 @@ public class ItemUpdaterFactory {
 
     /**
      * Creates a new {@link ItemUpdater} implementation based on the name of the provided {@link Item}.
+     */
+    public ItemUpdater createUpdater(Item item, boolean strictNameMatcher) {
+        if (strictNameMatcher) {
+            return createUpdaterStrict(item);
+        } else {
+            return createUpdaterLenient(item);
+        }
+    }
+
+    /**
+     * Creates ItemUpdater by matching exact String.
      *
      * @param item
      * @return
      */
-    public ItemUpdater createUpdater(Item item) {
+    private ItemUpdater createUpdaterStrict(Item item) {
         switch (item.name) {
             case AGED_BRIE:
                 return new AgedBrieDecorator(item);
@@ -34,5 +47,26 @@ public class ItemUpdaterFactory {
             default:
                 return new NormalItemDecorator(item);
         }
+    }
+
+    /**
+     * Creates ItemUpdater by matching if a shortened string is contained, while ignoring case sensitivity.
+     *
+     * @param item
+     * @return
+     */
+    private ItemUpdater createUpdaterLenient(Item item) {
+        String lowerCaseItemName = item.name.toLowerCase();
+
+        if (lowerCaseItemName.contains(BRIE)) {
+            return new AgedBrieDecorator(item);
+        } else if (lowerCaseItemName.contains(BACKSTAGE_PASS)) {
+            return new BackstagePassDecorator(item);
+        } else if (lowerCaseItemName.contains(SULFURAS)) {
+            return new SulfurasDecorator(item);
+        } else if (lowerCaseItemName.contains(CONJURED)) {
+            return new ConjuredItemDecorator(item);
+        }
+        return new NormalItemDecorator(item);
     }
 }

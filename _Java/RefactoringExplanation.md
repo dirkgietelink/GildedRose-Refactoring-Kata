@@ -9,7 +9,7 @@ Therefore I started writing a bunch unit tests first, before even touching the p
 unit tests for all requirements (tests for unimplemented conjured items disabled), I started refactoring. This would 
 cause breaking tests, from which I started a more standard TDD loop.
 
-### Issues to fix
+### Issues fixed
 
 * magic numbers
 * hardcoded strings
@@ -30,14 +30,13 @@ cause breaking tests, from which I started a more standard TDD loop.
 
 * Aged Brie is not decreasing in quality, once the due date has passed (this is a bit ambiguous from the requirements).
 * Sulfuras sellIn value is set to maximum int value after the first update, because the spec states that it never has to be sold. 
-
-* Aged Brie is matched ignoring case sensitivity.
-* Aged Brie is matched ignoring leading or trailing spaces.
-* Aged Brie is also matched if the Item name contains other words.
+* The way item names are matched is unclear. The specs and existing implementation are kind of ambiguous. 
+Therefore, I introduced a configuration called strictNameMatcher. 
+The default is true, but it can be set to false via app.setSstrictNameMatcher(false). For details, see the javadoc.
 
 ### How I progressed through the refactoring
 
-* Forked the project to my own  Github
+* Forked the project to my own Github
 * Read  requirements and tried to understand the code from a global level
 * Ran the tests
 * Formalized the requirements description,in order to create a baseline for adding new unit tests.
@@ -53,6 +52,7 @@ cause breaking tests, from which I started a more standard TDD loop.
 * Implemented factory pattern for creating the specific type of ItemUpdater.
 * Refactored the GildedRose application to use the factory. 
 * Code is in acceptable refactored state, so I enabled the tests for conjured items and implemented its functionality.
+* For further optimizations look at the git log of my  forked repo on Github.
 
 ### Github reference
 [Gilded Rose fork on Github dirkgietelink](https://github.com/dirkgietelink/GildedRose-Refactoring-Kata)
