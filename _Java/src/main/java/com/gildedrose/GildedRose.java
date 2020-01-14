@@ -1,5 +1,7 @@
 package com.gildedrose;
 
+import com.gildedrose.updater.ItemUpdater;
+import com.gildedrose.updater.ItemUpdaterFactory;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor

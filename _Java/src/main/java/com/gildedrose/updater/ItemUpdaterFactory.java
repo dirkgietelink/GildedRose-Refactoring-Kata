@@ -1,4 +1,6 @@
-package com.gildedrose;
+package com.gildedrose.updater;
+
+import com.gildedrose.Item;
 
 public class ItemUpdaterFactory {
 

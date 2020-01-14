@@ -1,5 +1,6 @@
-package com.gildedrose;
+package com.gildedrose.updater;
 
+import com.gildedrose.Item;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
