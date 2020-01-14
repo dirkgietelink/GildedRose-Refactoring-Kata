@@ -2,6 +2,8 @@ package com.gildedrose;
 
 public class SulfurasDecorator implements ItemUpdater {
 
+    private static final int MAX_QUALITY_SULFURAS = 80;
+
     private Item item;
 
     public SulfurasDecorator(Item item) {
@@ -15,6 +17,7 @@ public class SulfurasDecorator implements ItemUpdater {
 
     @Override
     public void updateDaysBeforeSell() {
-
+        item.sellIn = Integer.MAX_VALUE;
     }
+
 }

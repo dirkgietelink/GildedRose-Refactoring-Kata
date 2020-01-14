@@ -16,6 +16,6 @@ public class NormalItemDecorator implements ItemUpdater {
 
     @Override
     public void updateDaysBeforeSell() {
-
+        item.sellIn--;
     }
 }

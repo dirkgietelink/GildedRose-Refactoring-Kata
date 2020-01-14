@@ -32,14 +32,13 @@ class GildedRose {
                 case SULFURAS_HAND_OF_RAGNAROS:
                     itemUpdater = new SulfurasDecorator(item);
                     itemUpdater.updateQuality();
-                    item.sellIn = Integer.MAX_VALUE;
-                    continue;
+                    break;
                 default:
                     itemUpdater = new NormalItemDecorator(item);
                     itemUpdater.updateQuality();
                     break;
             }
-            item.sellIn--;
+            itemUpdater.updateDaysBeforeSell();
         }
     }
 

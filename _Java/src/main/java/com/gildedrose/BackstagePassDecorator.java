@@ -24,6 +24,6 @@ public class BackstagePassDecorator implements ItemUpdater {
 
     @Override
     public void updateDaysBeforeSell() {
-
+        item.sellIn--;
     }
 }

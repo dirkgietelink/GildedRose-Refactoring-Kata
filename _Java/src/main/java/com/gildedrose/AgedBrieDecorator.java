@@ -15,6 +15,6 @@ public class AgedBrieDecorator implements ItemUpdater {
     }
     @Override
     public void updateDaysBeforeSell() {
-
+        item.sellIn--;
     }
 }
