@@ -1,14 +1,15 @@
 package com.gildedrose;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@AllArgsConstructor
 public class SulfurasDecorator implements ItemUpdater {
 
     private static final int MAX_QUALITY_SULFURAS = 80;
 
+    @Getter
     private Item item;
-
-    public SulfurasDecorator(Item item) {
-        this.item = item;
-    }
 
     @Override
     public void updateQuality() {
