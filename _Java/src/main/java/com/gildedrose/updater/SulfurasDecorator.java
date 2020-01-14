@@ -4,6 +4,10 @@ import com.gildedrose.Item;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+/**
+ * ItemUpdater implementation for Sulfuras, whatever that may be.
+ * Sulfuras is special as its quality is always 80, and it has no sell date.
+ */
 @AllArgsConstructor
 public class SulfurasDecorator implements ItemUpdater {
 

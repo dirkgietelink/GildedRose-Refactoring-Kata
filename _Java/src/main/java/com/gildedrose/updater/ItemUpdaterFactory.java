@@ -2,6 +2,9 @@ package com.gildedrose.updater;
 
 import com.gildedrose.Item;
 
+/**
+ * Factory class for creating {@link ItemUpdater}s.
+ */
 public class ItemUpdaterFactory {
 
     //    private static final String SULFURAS = "Sulfuras";
@@ -12,6 +15,12 @@ public class ItemUpdaterFactory {
     private static final String AGED_BRIE = "Aged Brie";
     private static final String CONJURED_MANA_CAKE = "Conjured Mana Cake";
 
+    /**
+     * Creates a new {@link ItemUpdater} implementation based on the name of the provided {@link Item}.
+     *
+     * @param item
+     * @return
+     */
     public ItemUpdater createUpdater(Item item) {
         switch (item.name) {
             case AGED_BRIE:

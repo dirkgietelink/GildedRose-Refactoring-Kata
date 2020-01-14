@@ -4,6 +4,10 @@ import com.gildedrose.Item;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+/**
+ * ItemUpdater implementation for Backstage Passes.
+ * The quality of Backstage passes increases, and the increments get larger as the concert date is getting closer.
+ */
 @AllArgsConstructor
 public class BackstagePassDecorator implements ItemUpdater {
 

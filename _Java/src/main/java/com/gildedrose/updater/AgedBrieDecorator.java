@@ -4,6 +4,10 @@ import com.gildedrose.Item;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+/**
+ * ItemUpdater implementation for Aged Brie.
+ * The quality of Aged Brie increases per day.
+ */
 @AllArgsConstructor
 public class AgedBrieDecorator implements ItemUpdater {
 

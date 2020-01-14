@@ -4,6 +4,10 @@ import com.gildedrose.Item;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+/**
+ * ItemUpdater implementation for Conjured Items.
+ * Conjured Items decrease in quality twice as fast.
+ */
 @AllArgsConstructor
 public class ConjuredItemDecorator implements ItemUpdater {
 

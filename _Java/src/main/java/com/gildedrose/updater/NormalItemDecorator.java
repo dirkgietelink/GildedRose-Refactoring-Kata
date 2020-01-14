@@ -4,6 +4,10 @@ import com.gildedrose.Item;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+/**
+ * This represents a "normal" ItemUpdater. It behaves like most Items: The quality decreases by 1 per day, or by 2 when
+ * the due date  has passed.
+ */
 @AllArgsConstructor
 public class NormalItemDecorator implements ItemUpdater {
 
