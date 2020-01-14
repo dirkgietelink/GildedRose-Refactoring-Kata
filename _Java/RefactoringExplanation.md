@@ -54,7 +54,5 @@ cause breaking tests, from which I started a more standard TDD loop.
 * Refactored the GildedRose application to use the factory. 
 * Code is in acceptable refactored state, so I enabled the tests for conjured items and implemented its functionality.
 
-### Bugs found and fixed
-
 ### Github reference
-[My Guilded Rose fork on Github](https://github.com/dirkgietelink/GildedRose-Refactoring-Kata)
+[Gilded Rose fork on Github dirkgietelink](https://github.com/dirkgietelink/GildedRose-Refactoring-Kata)
